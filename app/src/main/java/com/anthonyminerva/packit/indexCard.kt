@@ -3,13 +3,12 @@ package com.anthonyminerva.packit
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.util.TableInfo
 import android.support.annotation.NonNull
 
-@Entity(tableName = "indexCards")
+@Entity(tableName = "indexCards", primaryKeys = arrayOf("Front", "Pack"))
 public class indexCard(front:String, back:String, pack:String) {
 
-    @PrimaryKey(autoGenerate = true)
-    private var id:Int = 0
     @NonNull
     @ColumnInfo(name = "Front")
     private var frontCard:String
