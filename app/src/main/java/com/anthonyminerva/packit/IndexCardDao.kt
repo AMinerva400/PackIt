@@ -24,7 +24,7 @@ interface indexCardDao {
     @Query("SELECT DISTINCT pack_name FROM cards")
     fun getAllPacks():LiveData<List<String>>
 
-    @Query("SELECT * FROM cards WHERE pack_name = :packName AND (front_card LIKE '%'+:searchTerm+'%' OR back_card LIKE '%'+:searchTerm+'%')")
+    @Query("SELECT * FROM cards WHERE pack_name = :packName AND (front_card LIKE ('%'+:searchTerm+'%') OR back_card LIKE ('%'+:searchTerm+'%'))")
     fun search(packName:String, searchTerm:String):LiveData<List<indexCard>>
 
 }

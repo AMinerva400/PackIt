@@ -12,4 +12,5 @@
     <string name="button_save">Create Index Card</string>
     <string name="empty_not_saved">Index Card Not Created - Not Filled Out</string>
     <string name="title_activity_pack">packActivity</string>
+    <string name="packSearch">Search For An Index Card</string>
 </resources>
