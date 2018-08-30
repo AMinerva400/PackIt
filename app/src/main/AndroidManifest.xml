@@ -23,6 +23,11 @@
         <activity
             android:name=".homeActivity"
             android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".newCardActivity" />
+        <activity
+            android:name=".packActivity"
+            android:label="@string/title_activity_pack"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

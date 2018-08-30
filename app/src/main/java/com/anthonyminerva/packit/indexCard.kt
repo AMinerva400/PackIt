@@ -6,46 +6,22 @@ import android.arch.persistence.room.PrimaryKey
 import android.arch.persistence.room.util.TableInfo
 import android.support.annotation.NonNull
 
-@Entity(tableName = "indexCards", primaryKeys = arrayOf("Front", "Pack"))
-public class indexCard(front:String, back:String, pack:String) {
+@Entity(tableName = "cards", primaryKeys = arrayOf("front_card", "pack_name"))
+data class indexCard(var front: String, var back: String, var pack:String) {
 
     @NonNull
-    @ColumnInfo(name = "Front")
-    private var frontCard:String
+    @ColumnInfo(name = "front_card")
+    public var frontCard:String? = ""
     @NonNull
-    @ColumnInfo(name = "Back")
-    private var backCard:String
+    @ColumnInfo(name = "back_card")
+    public var backCard:String? = ""
     @NonNull
-    @ColumnInfo(name = "Pack")
-    private var packName:String
+    @ColumnInfo(name = "pack_name")
+    public var packName:String? = ""
 
     init {
         frontCard = front
         backCard = back
-        packName = pack
-    }
-
-    fun getCardFront():String {
-        return frontCard;
-    }
-
-    fun setCardFront(front:String) {
-        frontCard = front
-    }
-
-    fun getCardBack():String {
-        return backCard;
-    }
-
-    fun setCardBack(back:String) {
-        backCard = back
-    }
-
-    fun getPackName():String {
-        return packName
-    }
-
-    fun setPackName(pack:String) {
         packName = pack
     }
 

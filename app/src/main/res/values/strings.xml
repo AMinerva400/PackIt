@@ -6,4 +6,10 @@
     <string name="startBtn">START</string>
     <string name="title">Pack\nIt!</string>
     <string name="title_activity_home">homeActivity</string>
+    <string name="hint_pack">Pack Name</string>
+    <string name="hint_front">Front of Card</string>
+    <string name="hint_back">Back of Card</string>
+    <string name="button_save">Create Index Card</string>
+    <string name="empty_not_saved">Index Card Not Created - Not Filled Out</string>
+    <string name="title_activity_pack">packActivity</string>
 </resources>

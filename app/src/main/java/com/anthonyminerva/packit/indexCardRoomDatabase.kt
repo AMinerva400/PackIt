@@ -11,20 +11,17 @@ public abstract class indexCardRoomDatabase : RoomDatabase() {
     abstract fun indexCardDao():indexCardDao
 
     companion object {
-        private lateinit var INSTANCE:indexCardRoomDatabase
-        internal fun getDatabase(context: Context):indexCardRoomDatabase {
-            if (INSTANCE == null)
-            {
-                synchronized (indexCardRoomDatabase::class.java) {
-                    if (INSTANCE == null)
-                    {
-                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                indexCardRoomDatabase::class.java, "indexcard_database")
-                                .build()
+        private var INSTANCE: indexCardRoomDatabase? = null
+
+        fun getDatabase(context: Context): indexCardRoomDatabase {
+            if(INSTANCE == null){
+                synchronized(indexCardRoomDatabase::class.java) {
+                    if(INSTANCE == null){
+                        INSTANCE = Room.databaseBuilder((context.applicationContext), indexCardRoomDatabase::class.java, "packit").build()
                     }
                 }
             }
-            return INSTANCE
+            return INSTANCE!!
         }
     }
 
