@@ -15,6 +15,7 @@ import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_pack.*
 import android.text.Editable
 import android.text.TextUtils
+import android.widget.PopupMenu
 
 
 class packActivity : AppCompatActivity() {
@@ -78,13 +79,24 @@ class packActivity : AppCompatActivity() {
         }
 
         packFab.setOnClickListener { view -> //TODO: Figure out which display to use
-            Snackbar.make(view, "Choose an Action", Snackbar.LENGTH_LONG)
-                    .setAction("Review Cards", View.OnClickListener {
-                        //TODO: Add Review Card Section - Possibly Fragment?
-                    })
-                    .setAction("Add New Card", View.OnClickListener {
-                        //TODO: Move to newCardActivity and preset PackName
-                    }).show()
+            val popUpMenu = PopupMenu(this, packFab)
+            popUpMenu.menuInflater.inflate(R.menu.popup_menu, popUpMenu.menu)
+            popUpMenu.setOnMenuItemClickListener { mItem ->
+                val mItem = mItem!!.itemId
+                when(mItem) {
+                    R.id.popUpReview -> {
+                        //TODO: Add Review Card Section - Possibly via Fragment?
+                    }
+                    R.id.popUpCreateNewCard -> {
+                        val intent: Intent = Intent(this, newCardActivity::class.java)
+                        val packName: String = mCards.get(0).packName!!
+                        intent.putExtra("PackName", packName)
+                        startActivity(intent)
+                    }
+                }
+                true
+            }
+            popUpMenu.show()
         }
     }
 

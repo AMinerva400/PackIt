@@ -25,13 +25,15 @@ class newCardActivity : AppCompatActivity() {
         mSpinner = findViewById(R.id.newCardSpinner)
         mBtn = findViewById(R.id.newCardBtnSave)
         val intent: Intent = getIntent()
-        val packNames: Array<String> = intent.getStringArrayExtra("PackNames")
-        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, packNames)
+        val packNames: Array<String>? = intent.getStringArrayExtra("PackNames")
+        val packName: String? = intent.getStringExtra("PackName")
+        mPackName.setText(if(packName != null) packName else "")
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, if(packNames != null) packNames else emptyArray())
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         mSpinner.adapter = spinnerAdapter
         mSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                mPackName.setText(packNames[position])
+                mPackName.setText(if(packNames != null) packNames[position] else "")
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {  }
